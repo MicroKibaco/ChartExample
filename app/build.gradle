@@ -27,6 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0'
-    compile 'com.android.support:percent:22.2.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5' //饼形图设计
+    compile 'com.android.support:percent:25.0.0'  //百分比布局
 }

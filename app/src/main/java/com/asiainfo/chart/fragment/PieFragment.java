@@ -76,7 +76,7 @@ public class PieFragment extends Fragment implements OnChartValueSelectedListene
         PieDataSet dataSet = new PieDataSet(entrys,"月度数据饼形图");
         dataSet.setColors(new int[]{Color.rgb(216, 77, 719), Color.rgb(183, 56, 63), Color.rgb(247, 85, 47)});
 
-        PieData pieData = new PieData();
+        PieData pieData = new PieData(titles,entrys);
         pieData.setValueTextSize(22);
         mChart.setData(pieData);
 
