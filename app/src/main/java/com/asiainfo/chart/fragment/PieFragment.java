@@ -20,7 +20,6 @@ import com.asiainfo.chart.view.PieChartExample;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
@@ -63,27 +62,27 @@ public class PieFragment extends Fragment implements OnChartValueSelectedListene
 
     private void setData() {
         ArrayList<String> titles = new ArrayList<>();
-        ArrayList<PieEntry> entrys = new ArrayList<>();
+        ArrayList<Entry> entrys = new ArrayList<>();
 
-        //IndexOutOfBoundsException: Index: 0, Size: 0
         for (int i = 0; i < mData.obj.size(); i++) {
-
             MonthBean.PieBean pieBean = mData.obj.get(i);
             titles.add(pieBean.title);
-            entrys.add(new PieEntry(pieBean.value,i));
+            entrys.add(new Entry(pieBean.value,i));
         }
 
         PieDataSet dataSet = new PieDataSet(entrys,"月度数据饼形图");
         dataSet.setColors(new int[]{Color.rgb(216, 77, 719), Color.rgb(183, 56, 63), Color.rgb(247, 85, 47)});
-
-        PieData pieData = new PieData(titles,entrys);
+        PieData pieData = new PieData(titles,dataSet);
         pieData.setValueTextSize(22);
         mChart.setData(pieData);
-
         mChart.getLegend().setEnabled(false);
         mChart.setCenterText(handleCenterText());
         mChart.setRotationEnabled(false);
         mChart.setOnChartValueSelectedListener(this);
+        mChart.setDrawSliceText(false);
+        mChart.getData().getDataSet().setDrawValues(false);
+        mChart.setDescription("");
+
     }
 
     public CharSequence handleCenterText() {
@@ -103,18 +102,17 @@ public class PieFragment extends Fragment implements OnChartValueSelectedListene
         return fragment;
     }
 
-    @Override
-    public void onValueSelected(Entry e, Highlight h) {
-        float percent = 360f / mData.getSum();//百分比
-        float angle = 90-mData.obj.get((int) e.getX()).value*percent/2-(int) mData.getSum()*percent;//角度
-        mChart.setRotationAngle(angle);
-        upDateDesText(e.getX());
-    }
-
     private void upDateDesText(float xIndex) {
         tvDes.setText(mData.obj.get((int) xIndex).title + ": " + mData.obj.get((int) xIndex).value);
     }
 
+    @Override
+    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+        float percent = 360f / mData.getSum();//百分比
+        float angle = 90-mData.obj.get( e.getXIndex()).value*percent/2-(int) mData.getSum()*percent;//角度
+        mChart.setRotationAngle(angle);
+        upDateDesText(e.getXIndex());
+    }
 
     @Override
     public void onNothingSelected() {

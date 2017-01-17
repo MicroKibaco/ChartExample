@@ -13,4 +13,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"/>
+    <!--button不可以在viewpager上面否则会被覆盖-->
+    <Button
+            android:id="@+id/pre_btn"
+            android:background="@drawable/bt_jump_pre"
+            android:layout_marginTop="@dimen/activity_piechart_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/next_btn"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bt_jump_next"
+            android:layout_marginTop="@dimen/activity_piechart_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 </RelativeLayout>
