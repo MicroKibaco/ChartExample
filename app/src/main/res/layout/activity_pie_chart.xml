@@ -8,11 +8,11 @@
 
         tools:context="com.asiainfo.chart.activity.PieChartActivity">
 
-    <android.support.v4.view.ViewPager
+    <com.asiainfo.chart.view.CustomViewpager
             android:id="@+id/piechart_vp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"/>
+            />
     <!--button不可以在viewpager上面否则会被覆盖-->
     <Button
             android:id="@+id/pre_btn"

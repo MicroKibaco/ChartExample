@@ -77,7 +77,7 @@ public class PieFragment extends Fragment implements OnChartValueSelectedListene
         mChart.setData(pieData);
         mChart.getLegend().setEnabled(false);
         mChart.setCenterText(handleCenterText());
-        mChart.setRotationEnabled(false);
+        //mChart.setRotationEnabled(false);
         mChart.setOnChartValueSelectedListener(this);
         mChart.setDrawSliceText(false);
         mChart.getData().getDataSet().setDrawValues(false);
