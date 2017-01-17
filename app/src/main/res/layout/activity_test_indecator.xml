@@ -7,7 +7,7 @@
     android:background="#ffffffff"
     android:orientation="vertical">
 
-    <com.imooc.view.ViewPagerIndicator
+    <com.asiainfo.chart.view.ViewPagerIndicator
         android:id="@+id/id_indicatot"
         android:layout_width="match_parent"
         android:layout_height="45dp"
